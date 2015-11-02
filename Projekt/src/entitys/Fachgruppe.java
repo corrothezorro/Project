@@ -1,4 +1,4 @@
-package grenzklassen;
+package entitys;
 
 public class Fachgruppe {
 	private String name;

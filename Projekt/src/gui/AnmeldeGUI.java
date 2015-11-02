@@ -73,7 +73,7 @@ public class AnmeldeGUI extends JFrame {
 		JSeparator separator = new JSeparator();
 		separator.setBounds(10, 86, 352, 2);
 		getContentPane().add(separator);
-		setBounds(100, 100, 400, 400);
+		setBounds(100, 100, 400, 183);
 		
 	
 	}

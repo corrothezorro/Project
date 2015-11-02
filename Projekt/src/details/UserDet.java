@@ -9,11 +9,11 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
-public class DozentDet extends JFrame{
+public class UserDet extends JFrame{
 	private JPasswordField passwordField;
 	private JTextField textField;
 	private JTextField textField_1;
-	public DozentDet() {
+	public UserDet() {
 		setTitle("Dozent Detailansicht");
 		getContentPane().setLayout(null);
 		
@@ -57,11 +57,11 @@ public class DozentDet extends JFrame{
 		getContentPane().add(comboBox);
 		
 		JButton btnSpeichern = new JButton("Speichern");
-		btnSpeichern.setBounds(69, 134, 89, 23);
+		btnSpeichern.setBounds(29, 134, 120, 23);
 		getContentPane().add(btnSpeichern);
 		
 		JButton btnAbbrechen = new JButton("Abbrechen");
-		btnAbbrechen.setBounds(168, 134, 89, 23);
+		btnAbbrechen.setBounds(159, 134, 105, 23);
 		getContentPane().add(btnAbbrechen);
 	}
 }

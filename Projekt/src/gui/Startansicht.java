@@ -11,10 +11,14 @@ import javax.swing.SwingConstants;
 import javax.swing.JSeparator;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+
+import details.PruefungDet;
 
 public class Startansicht extends JFrame{
 	
@@ -64,9 +68,25 @@ public class Startansicht extends JFrame{
 		JButton btnNewButton_1 = new JButton("Bearbeiten");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							PruefungDet frame = new PruefungDet();
+							frame.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						setVisible(false);
+						dispose();
+					}
+				});
+				
+				
+				
 			}
 		});
-		btnNewButton_1.setBounds(498, 245, 89, 23);
+		btnNewButton_1.setBounds(498, 245, 99, 23);
 		getContentPane().add(btnNewButton_1);
 		
 		JLabel lblAlsPrferEingetragen = new JLabel("Dozent: eigenePr\u00FCfungen                      Fachgruppenreferent: alle Pr\u00FCfungen der Fachgruppe");
@@ -74,11 +94,11 @@ public class Startansicht extends JFrame{
 		getContentPane().add(lblAlsPrferEingetragen);
 		
 		JButton btnEigenePrfungen = new JButton("eigene Pr\u00FCfungen");
-		btnEigenePrfungen.setBounds(357, 245, 131, 23);
+		btnEigenePrfungen.setBounds(336, 245, 152, 23);
 		getContentPane().add(btnEigenePrfungen);
 		
 		JButton btnAllePrfungen = new JButton("alle Pr\u00FCfungen");
-		btnAllePrfungen.setBounds(245, 245, 101, 23);
+		btnAllePrfungen.setBounds(211, 245, 115, 23);
 		getContentPane().add(btnAllePrfungen);
 		
 		JSeparator separator_1 = new JSeparator();

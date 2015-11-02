@@ -18,11 +18,11 @@ public class StudiengangDet extends JFrame{
 		textField.setColumns(10);
 		
 		JButton btnSpeichern = new JButton("Speichern");
-		btnSpeichern.setBounds(63, 58, 89, 23);
+		btnSpeichern.setBounds(29, 58, 120, 23);
 		getContentPane().add(btnSpeichern);
 		
 		JButton btnAbbrechen = new JButton("Abbrechen");
-		btnAbbrechen.setBounds(162, 58, 89, 23);
+		btnAbbrechen.setBounds(159, 58, 110, 23);
 		getContentPane().add(btnAbbrechen);
 		
 		JLabel lblBezeichnung = new JLabel("Bezeichnung:");

@@ -42,11 +42,11 @@ public class ModulDet extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton.setBounds(60, 211, 89, 23);
+		btnNewButton.setBounds(29, 211, 120, 23);
 		getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Abbrechen");
-		btnNewButton_1.setBounds(159, 211, 89, 23);
+		btnNewButton_1.setBounds(159, 211, 115, 23);
 		getContentPane().add(btnNewButton_1);
 		
 		JTextPane txtpnprfungenDieZu = new JTextPane();

@@ -75,15 +75,15 @@ public class PruefungDet extends JFrame{
 		textField_3.setColumns(10);
 		
 		JLabel lblNurFr = new JLabel("// nur f\u00FCr den Admin \u00E4nderbar");
-		lblNurFr.setBounds(229, 141, 126, 14);
+		lblNurFr.setBounds(229, 141, 182, 14);
 		getContentPane().add(lblNurFr);
 		
 		JButton btnSpeichern = new JButton("Speichern");
-		btnSpeichern.setBounds(58, 175, 89, 23);
+		btnSpeichern.setBounds(29, 175, 120, 23);
 		getContentPane().add(btnSpeichern);
 		
 		JButton btnAbbrechen = new JButton("Abbrechen");
-		btnAbbrechen.setBounds(166, 175, 89, 23);
+		btnAbbrechen.setBounds(159, 175, 110, 23);
 		getContentPane().add(btnAbbrechen);
 	}
 
