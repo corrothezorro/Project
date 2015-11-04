@@ -85,6 +85,8 @@ public class PruefungDet extends JFrame{
 		JButton btnAbbrechen = new JButton("Abbrechen");
 		btnAbbrechen.setBounds(159, 175, 110, 23);
 		getContentPane().add(btnAbbrechen);
+		
+		setBounds(100, 100, 400, 259);
 	}
 
 }

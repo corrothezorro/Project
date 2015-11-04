@@ -1,18 +1,25 @@
 package gui;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
 import java.awt.EventQueue;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JSeparator;
 
+import Controller.AnmeldeGUIController;
+
 public class AnmeldeGUI extends JFrame {
-	private JPasswordField passwordField;
-	private JTextField textField;
+	private JPasswordField pfPasswort;
+	private JTextField tfNutzer;
+	private AnmeldeGUIController anmeldeGUIController = new AnmeldeGUIController();
 
 	public AnmeldeGUI() {
 		setTitle("Log-In Pr\u00FCfungsverwaltung");
@@ -26,14 +33,14 @@ public class AnmeldeGUI extends JFrame {
 		lblNewLabel_1.setBounds(30, 61, 46, 14);
 		getContentPane().add(lblNewLabel_1);
 
-		passwordField = new JPasswordField();
-		passwordField.setBounds(107, 58, 131, 20);
-		getContentPane().add(passwordField);
+		pfPasswort = new JPasswordField();
+		pfPasswort.setBounds(107, 58, 131, 20);
+		getContentPane().add(pfPasswort);
 
-		textField = new JTextField();
-		textField.setBounds(107, 23, 131, 20);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		tfNutzer = new JTextField();
+		tfNutzer.setBounds(107, 23, 131, 20);
+		getContentPane().add(tfNutzer);
+		tfNutzer.setColumns(10);
 
 		JButton btnEinloggen = new JButton("Einloggen");
 		btnEinloggen.addActionListener(new ActionListener() {
@@ -41,18 +48,29 @@ public class AnmeldeGUI extends JFrame {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							Startansicht frame = new Startansicht();
-							frame.setVisible(true);
+							
+							//AnmeldeGUIController 
+							String nutzerName = tfNutzer.getText();
+							char[] passwort = pfPasswort.getPassword();
+							if(anmeldeGUIController.passwortPruefen(nutzerName, passwort)){
+								Startansicht frame = new Startansicht(nutzerName);
+								frame.setVisible(true);
+								setVisible(false);
+								dispose();
+							}else{
+								JOptionPane.showMessageDialog(null, "Nutzername oder Passwort falsch.", "Log In Fehler", JOptionPane.ERROR_MESSAGE);
+							}
+
+							
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
-						setVisible(false);
-						dispose();
+						
 					}
 				});
 			}
 		});
-		btnEinloggen.setBounds(155, 103, 89, 23);
+		btnEinloggen.setBounds(179, 103, 90, 23);
 		getContentPane().add(btnEinloggen);
 
 		JButton btnBeenden = new JButton("Beenden");
@@ -63,11 +81,19 @@ public class AnmeldeGUI extends JFrame {
 				System.exit(0);
 			}
 		});
-		btnBeenden.setBounds(254, 103, 89, 23);
+		btnBeenden.setBounds(279, 103, 89, 23);
 		getContentPane().add(btnBeenden);
 
 		JButton btnPasswortVergessen = new JButton("Passwort vergessen?");
-		btnPasswortVergessen.setBounds(10, 103, 135, 23);
+		btnPasswortVergessen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null, "Wenden Sie sich bitte an den Systemadministrator: \n"
+						+ "     Sascha Leonardo \n"
+						+ "     Raum B421 \n"
+						+ "     sascha.leonardo@fh-bielefeld.de", "Passwort vergessen?", JOptionPane.OK_CANCEL_OPTION);
+			}
+		});
+		btnPasswortVergessen.setBounds(29, 103, 140, 23);
 		getContentPane().add(btnPasswortVergessen);
 		
 		JSeparator separator = new JSeparator();

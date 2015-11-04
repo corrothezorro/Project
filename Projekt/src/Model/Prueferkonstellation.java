@@ -1,4 +1,4 @@
-package entitys;
+package Model;
 
 public class Prueferkonstellation {
 	private Studiengang[] studiengaenge;

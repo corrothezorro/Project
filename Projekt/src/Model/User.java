@@ -1,4 +1,4 @@
-package entitys;
+package Model;
 
 public class User {
 	private char[] passwort;

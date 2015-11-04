@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -19,10 +20,14 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import details.PruefungDet;
+import details.Selbstinformation;
+import details.UserDet;
+
+import javax.swing.JMenu;
 
 public class Startansicht extends JFrame{
 	
-	public Startansicht() {
+	public Startansicht(String nutzerName) {
 		setTitle("Pr\u00FCfungsverwaltung");
 		getContentPane().setLayout(null);
 		
@@ -50,11 +55,6 @@ public class Startansicht extends JFrame{
 		separator.setBounds(31, 91, 586, 2);
 		getContentPane().add(separator);
 		
-		JTextPane txtpnTabelleMitInformationen = new JTextPane();
-		txtpnTabelleMitInformationen.setText("Tabelle mit Informationen zu den Pr\u00FCfungen f\u00FCr die der angemeldete Dozent eingetragen ist");
-		txtpnTabelleMitInformationen.setBounds(31, 131, 556, 93);
-		getContentPane().add(txtpnTabelleMitInformationen);
-		
 		JLabel lblBenutzer = new JLabel("Benutzer:");
 		lblBenutzer.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblBenutzer.setBounds(10, 16, 67, 14);
@@ -65,49 +65,105 @@ public class Startansicht extends JFrame{
 		lblLblbenutzer.setBounds(109, 16, 77, 14);
 		getContentPane().add(lblLblbenutzer);
 		
-		JButton btnNewButton_1 = new JButton("Bearbeiten");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		
+		String rolle = "Admin";
+		JPanel PruefungenPanel = new PruefungenPanel(rolle);
+		PruefungenPanel.setSize(651, 238);
+		PruefungenPanel.setLocation(10, 92);
+		getContentPane().add(PruefungenPanel);
+		
+		JButton btnNeu = new JButton("Neu");
+		btnNeu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNeu.setBounds(165, 191, 69, 23);
+		PruefungenPanel.add(btnNeu);
+		
+		JButton btnLschen = new JButton("L\u00F6schen");
+		btnLschen.setBounds(265, 191, 89, 23);
+		PruefungenPanel.add(btnLschen);
+		
+		setBounds(100, 100, 677, 400);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnEinstellungen = new JMenu("Einstellungen");
+		menuBar.add(mnEinstellungen);
+		
+		JMenuItem nutzerInformationen = new JMenuItem("Benutzerinformationen");
+		nutzerInformationen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							PruefungDet frame = new PruefungDet();
+							String name = null;
+							String nutzername = null;
+							char[] passwort = null;
+							String rolle = null;
+							Selbstinformation frame = new Selbstinformation(nutzername);
 							frame.setVisible(true);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
-						setVisible(false);
-						dispose();
+					
+						
 					}
 				});
 				
-				
-				
 			}
 		});
-		btnNewButton_1.setBounds(498, 245, 99, 23);
-		getContentPane().add(btnNewButton_1);
+		mnEinstellungen.add(nutzerInformationen);
 		
-		JLabel lblAlsPrferEingetragen = new JLabel("Dozent: eigenePr\u00FCfungen                      Fachgruppenreferent: alle Pr\u00FCfungen der Fachgruppe");
-		lblAlsPrferEingetragen.setBounds(31, 106, 556, 14);
-		getContentPane().add(lblAlsPrferEingetragen);
+		JMenu mnBearbeiten = new JMenu("Bearbeiten");
+		menuBar.add(mnBearbeiten);
 		
-		JButton btnEigenePrfungen = new JButton("eigene Pr\u00FCfungen");
-		btnEigenePrfungen.setBounds(336, 245, 152, 23);
-		getContentPane().add(btnEigenePrfungen);
+		JMenuItem mntmModule = new JMenuItem("Module");
+		mntmModule.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							String name = null;
+							String nutzername = null;
+							char[] passwort = null;
+							String rolle = null;
+							UserDet frame = new UserDet(name, nutzername, passwort, rolle);
+							frame.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					
+						
+					}
+				});
+			}
+		});
+		mnBearbeiten.add(mntmModule);
 		
-		JButton btnAllePrfungen = new JButton("alle Pr\u00FCfungen");
-		btnAllePrfungen.setBounds(211, 245, 115, 23);
-		getContentPane().add(btnAllePrfungen);
+		JMenuItem mntmNutzer = new JMenuItem("Nutzer");
+		mntmNutzer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		mnBearbeiten.add(mntmNutzer);
 		
-		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(29, 235, 588, 2);
-		getContentPane().add(separator_1);
+		JMenuItem mntmPrfungen = new JMenuItem("Pr\u00FCfungen");
+		mnBearbeiten.add(mntmPrfungen);
 		
-		JLabel lblNurFr = new JLabel("// nur f\u00FCr Fachgruppenreferenten");
-		lblNurFr.setBounds(39, 249, 199, 14);
-		getContentPane().add(lblNurFr);
-		setBounds(100, 100, 677, 400);
+		JMenuItem mntmStudiengnge = new JMenuItem("Studieng\u00E4nge");
+		mnBearbeiten.add(mntmStudiengnge);
+		
+		JMenuItem mntmFachgruppen = new JMenuItem("Fachgruppen");
+		mnBearbeiten.add(mntmFachgruppen);
+		
+		JMenu mnber = new JMenu("\u00DCber");
+		menuBar.add(mnber);
+		
+		JMenuItem mntmFeedback = new JMenuItem("Feedback");
+		mnber.add(mntmFeedback);
+		
+		
 	}
 }

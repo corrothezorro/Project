@@ -1,4 +1,4 @@
-package entitys;
+package Model;
 
 public class Studiengang {
 private String bezeichnung;
