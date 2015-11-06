@@ -1,4 +1,4 @@
-package Comperators;
+package gui;
 
 import java.util.Comparator;
 

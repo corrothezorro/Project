@@ -4,8 +4,12 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTable;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -15,6 +19,8 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowListener;
+import java.util.TreeMap;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -25,9 +31,29 @@ import details.UserDet;
 
 import javax.swing.JMenu;
 
+import Controller.StartansichtController;
+import Model.Pruefung;
+
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
+
 public class Startansicht extends JFrame{
 	
-	public Startansicht(String nutzerName) {
+	
+	ListSelectionModel listmodel;
+	Tabelle tabelle;
+	DefaultTableModel dtm;
+	TableRowSorter<DefaultTableModel> sorter;
+	StartansichtController startansichtController = new StartansichtController();
+	private final ButtonGroup buttonGroup = new ButtonGroup();
+	JButton btnBearbeiten;
+	JButton btnNeu;
+	
+	public Startansicht(String nutzername) {
+		// Abfrage der Rolle des angemeldeten Nutzers
+		String rolle;
+		rolle = startansichtController.BestimmeRolle(nutzername);
+		
 		setTitle("Pr\u00FCfungsverwaltung");
 		getContentPane().setLayout(null);
 		
@@ -65,24 +91,31 @@ public class Startansicht extends JFrame{
 		lblLblbenutzer.setBounds(109, 16, 77, 14);
 		getContentPane().add(lblLblbenutzer);
 		
+		btnBearbeiten = new JButton("Bearbeiten");
+		btnBearbeiten.setBounds(504, 266, 113, 23);
+		getContentPane().add(btnBearbeiten);
 		
-		String rolle = "Admin";
-		JPanel PruefungenPanel = new PruefungenPanel(rolle);
-		PruefungenPanel.setSize(651, 238);
-		PruefungenPanel.setLocation(10, 92);
-		getContentPane().add(PruefungenPanel);
-		
-		JButton btnNeu = new JButton("Neu");
+		btnNeu = new JButton("Neu");
 		btnNeu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNeu.setBounds(165, 191, 69, 23);
-		PruefungenPanel.add(btnNeu);
+		btnNeu.setBounds(405, 266, 89, 23);
+		getContentPane().add(btnNeu);
 		
-		JButton btnLschen = new JButton("L\u00F6schen");
-		btnLschen.setBounds(265, 191, 89, 23);
-		PruefungenPanel.add(btnLschen);
+		JRadioButton rbtnEigene = new JRadioButton("eigene Pr\u00FCfungen");
+		rbtnEigene.setSelected(true);
+		buttonGroup.add(rbtnEigene);
+		rbtnEigene.setBounds(31, 104, 155, 23);
+		getContentPane().add(rbtnEigene);
+		
+		JRadioButton rbtnFachgruppe = new JRadioButton("Pr\u00FCfungen Fachgruppe");
+		buttonGroup.add(rbtnFachgruppe);
+		rbtnFachgruppe.setBounds(185, 104, 161, 23);
+		getContentPane().add(rbtnFachgruppe);
+		
+		
+		
 		
 		setBounds(100, 100, 677, 400);
 		
@@ -163,6 +196,64 @@ public class Startansicht extends JFrame{
 		
 		JMenuItem mntmFeedback = new JMenuItem("Feedback");
 		mnber.add(mntmFeedback);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		ActionListener myActionListener = new MyActionListener(this);
+		ListSelectionListener myListSelectionListener = new MyListSelectionListener(this);
+		
+		
+		
+		
+		dtm = new DefaultTableModel(startansichtController.data(), startansichtController.getColumnNamesPruefung()) {
+			
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		}; 
+			
+		tabelle = new Tabelle("Pruefung", dtm);
+		
+		tabelle.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		sorter = new TableRowSorter<DefaultTableModel>(dtm);
+					//tabelle.setRowSorter(sorter);
+					//sorter.setComparator(3, new DateComparator());
+					//sorter.setComparator(0, new IntegerComparator());
+
+				
+		/*
+		 * Farbgestaltung der Tabelle wird durch Verwendung der Klasse
+		 * ColoredTableCellRenderer definiert. Jede zweite Zeile wird farblich hervorgehoben.
+		 * Wird eine Zeile ausgewählt, wird dies wiederum durch eine farbliche 
+		 * Hervorhebung angezeigt. 
+		 */
+		
+		/*
+		 * Damit eine Tabelle ein Event auslöst, sobald eine Zeile ausgewählt ist,
+		 * ist es erforderlich, eine Variable der Klasse ListSelectionModel zu deklarieren
+		 * und diese mit dem SelectionModel der Tabelle zu initialisieren. Diese Variable
+		 * wird anschließen beim Eventhandler LisSelectionListener registriert.
+		 */
+		listmodel = tabelle.getSelectionModel();
+		listmodel.addListSelectionListener(myListSelectionListener);
+		
+		
+		//JScrollPane sp = new JScrollPane(tabelle);
+		
+		getContentPane().add(tabelle);;
+		
+		
+		
+		
+		
 		
 		
 	}

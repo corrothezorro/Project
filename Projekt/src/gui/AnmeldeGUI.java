@@ -50,10 +50,10 @@ public class AnmeldeGUI extends JFrame {
 						try {
 							
 							//AnmeldeGUIController 
-							String nutzerName = tfNutzer.getText();
+							String nutzername = tfNutzer.getText();
 							char[] passwort = pfPasswort.getPassword();
-							if(anmeldeGUIController.passwortPruefen(nutzerName, passwort)){
-								Startansicht frame = new Startansicht(nutzerName);
+							if(anmeldeGUIController.passwortPruefen(nutzername, passwort) && anmeldeGUIController.nutzerAktiv(nutzername)){
+								Startansicht frame = new Startansicht(nutzername);
 								frame.setVisible(true);
 								setVisible(false);
 								dispose();

@@ -5,12 +5,22 @@ public class User {
 	private String nachname;
 	private String rolle;
 	private String benutzername;
+	private boolean aktiv;
 	
-	public User(String benutzername, char[] passwort, String nachname, String rolle){
+	public User(String benutzername, char[] passwort, String nachname, String rolle, boolean aktiv){
 		this.benutzername = benutzername;
 		this.passwort = passwort;
 		this.nachname = nachname;
 		this.rolle = rolle;
+		this.aktiv = aktiv;
+	}	
+	
+	public boolean getAktiv() {
+		return aktiv;
+	}
+
+	public void setAktiv(boolean aktiv) {
+		this.aktiv = aktiv;
 	}
 
 	public char[] getPasswort() {

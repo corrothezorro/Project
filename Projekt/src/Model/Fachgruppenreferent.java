@@ -4,8 +4,8 @@ public class Fachgruppenreferent extends Dozent{
 
 	
 	
-	public Fachgruppenreferent(String benutzername, char[] passwort, String nachname, String rolle){
-		super(benutzername, passwort, nachname, rolle);	
+	public Fachgruppenreferent(String benutzername, char[] passwort, String nachname, String rolle, boolean aktiv){
+		super(benutzername, passwort, nachname, rolle, aktiv);	
 	}
 	
 	

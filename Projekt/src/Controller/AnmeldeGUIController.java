@@ -9,9 +9,13 @@ public class AnmeldeGUIController {
 	public boolean passwortPruefen(String nutzer, char[] passwort){
 		
 		
-		return false;
+		return true;
 	}
-	
+	public boolean nutzerAktiv(String nutzer){
+		
+		
+		return true;
+	}
 	
 	
 }

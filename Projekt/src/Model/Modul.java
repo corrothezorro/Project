@@ -4,10 +4,20 @@ public class Modul {
 
 	private String bezeichnung;
 	private int modNr;
+	private boolean aktiv;
 	
-	public Modul(String bezeichnung, int modNr) {
+	public Modul(String bezeichnung, int modNr, boolean aktiv) {
 		this.bezeichnung = bezeichnung;
 		this.modNr = modNr;
+		this.aktiv = aktiv;
+	}
+	
+	public boolean getAktiv() {
+		return aktiv;
+	}
+
+	public void setAktiv(boolean aktiv) {
+		this.aktiv = aktiv;
 	}
 
 	public int getModNr() {

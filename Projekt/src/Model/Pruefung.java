@@ -8,16 +8,25 @@ public class Pruefung {
 	private String pruefungsForm;
 	private int dauer;
 	private String raum;
+	private boolean aktiv;
 
-	public Pruefung(int prfNr, Date datum, String pruefungsForm, int dauer, String raum){
+	public Pruefung(int prfNr, Date datum, String pruefungsForm, int dauer, String raum, boolean aktiv){
 		this.prfNr = prfNr;
 		this.datum = datum;
 		this.pruefungsForm = pruefungsForm;
 		this.dauer = dauer;
 		this.raum = raum;
+		this.aktiv = aktiv;
 	}
-	
-	
+		
+	public boolean getAktiv() {
+		return aktiv;
+	}
+
+	public void setAktiv(boolean aktiv) {
+		this.aktiv = aktiv;
+	}
+
 	public int getPrfNr() {
 		return prfNr;
 	}
