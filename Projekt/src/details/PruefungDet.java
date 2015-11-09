@@ -110,7 +110,16 @@ public class PruefungDet extends JFrame{
 		JCheckBox chckbxAktiv = new JCheckBox("aktiv");
 		chckbxAktiv.setBounds(83, 162, 97, 23);
 		getContentPane().add(chckbxAktiv);
-		chckbxAktiv.setSelected(aktiv);
+		if (aktiv){
+			System.out.println(aktiv + "");
+			chckbxAktiv.setSelected(true);
+		}else {
+			System.out.println(aktiv + "");
+			chckbxAktiv.setSelected(false);
+		}
 		setBounds(100, 100, 430, 338);
+		
+		
+		
 	}
 }

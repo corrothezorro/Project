@@ -47,11 +47,10 @@ public class AnmeldeGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
-						try {
-							
-							//AnmeldeGUIController 
+						try {						
 							String nutzername = tfNutzer.getText();
 							char[] passwort = pfPasswort.getPassword();
+							
 							if(anmeldeGUIController.passwortPruefen(nutzername, passwort) && anmeldeGUIController.nutzerAktiv(nutzername)){
 								Startansicht frame = new Startansicht(nutzername);
 								frame.setVisible(true);

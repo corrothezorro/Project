@@ -3,13 +3,15 @@ package Controller;
 import java.util.Date;
 import java.util.TreeMap;
 
-import Model.Dozent;
-import Model.Fachgruppe;
-import Model.Modul;
-import Model.Prueferkonstellation;
-import Model.Pruefung;
-import Model.Studiengang;
-import Model.User;
+import javax.swing.table.DefaultTableModel;
+
+import model.Dozent;
+import model.Fachgruppe;
+import model.Modul;
+import model.Prueferkonstellation;
+import model.Pruefung;
+import model.Studiengang;
+import model.User;
 
 public class StartansichtController {
 	
@@ -20,13 +22,15 @@ public class StartansichtController {
 	private TreeMap<Integer, Studiengang> studgaenge;
 	private TreeMap<Integer, Prueferkonstellation> prueferkonst;
 	
-	private String[] columnNamesUser = { "Benutzername", "Nachname", "Rolle", "aktiv" };
-	private String[] columnNamesFachgruppe = { "Bezeichnung", "aktiv" };
-	private String[] columnNamesModul = { "Modulbezeichnung", "Modulnr.", "aktiv" };
-	private String[] columnNamesPrueferkonst = { "Studiengänge", "Erstprüfer", "Zweitprüfer", "Prüfungen" };
-	private String[] columnNamesPruefung = { "Prüfungsnr." , "Datum", "Prüfungsform", "Dauer", "Raum", "aktiv"};
-	private String[] columnNamesStudiengang = { "Bezeichnung", "aktiv" };
 	
+	
+	private String[] columnHeaderUser = new String[] { "Benutzername", "Nachname", "Rolle", "aktiv" };
+	private String[] columnHeaderFachgurppe = new String[] { "Bezeichnung", "aktiv" };
+	private String[] columnHeaderModul = new String[] { "Modulbezeichnung", "Modulnr.", "aktiv" };
+	private String[] columnHeaderPrfkonst = new String[] { "Studiengänge", "Erstpruefer", "Zweitpruefer", "Prüfungen" };
+	private String[] columnHeaderPrfg = new String[] { "Pruefungsnr." , "Datum", "Pruefungsform", "Dauer", "Raum", "aktiv"};
+	private String[] columnHeaderStdg = new String[] { "Bezeichnung", "aktiv" };
+		
 	private Pruefung aktPruefung;
 	private Modul aktModul;
 	private Fachgruppe aktFachgruppe;
@@ -88,53 +92,77 @@ public class StartansichtController {
 		aktPrueferkonst = new Prueferkonstellation(studiengaenge, erstpruefer, zweitpruefer,pruefungen);
 	}
 
-	public String[] getColumnNamesUser() {
-		return columnNamesUser;
-	}
-
-	public String[] getColumnNamesFachgruppe() {
-		return columnNamesFachgruppe;
-	}
-
-	public String[] getColumnNamesModul() {
-		return columnNamesModul;
-	}
-
-	public String[] getColumnNamesPrueferkonst() {
-		return columnNamesPrueferkonst;
-	}
-
-	public String[] getColumnNamesPruefung() {
-		return columnNamesPruefung;
-	}
-
-	public String[] getColumnNamesStudiengang() {
-		return columnNamesStudiengang;
-	}
-	
-	public Object[][] data(){
-		// prfnr, datum, prfForm, dauer, raum, aktiv
-		Object[][] datas = new String[2][6];
-		datas[0][0] = "1001";
-		datas[0][1] = "12.12.1992";
-		datas[0][2] = "klausur";
-		datas[0][3] = "120";
-		datas[0][4] = "b3";
-		datas[0][5] = "true";
+	private Object[][] data(String klasse){
+			
+			Object[][] datas = null;
+			if (klasse == "modul"){
+				// Modulbezeichnung, Modulnr., aktiv
+				
+				datas = new String[2][3];
+				
+				datas[0][0] = "Rechnungswesen";
+				datas[0][1] = "1001";
+				datas[0][2] = "true";
+				
+				datas = new String[2][3];
+				datas[1][0] = "Produktion";
+				datas[1][1] = "1002";
+				datas[1][2] = "false";
+			}
+			if (klasse == "pruefung"){
+				// prfnr, dauer, prfForm, datum, raum, aktiv
+				
+				datas = new String[2][6];
+				
+				datas[0][0] = "1001";
+				datas[0][1] = "120";
+				datas[0][2] = "klausur";
+				datas[0][3] = "12.12.1992";
+				datas[0][4] = "b3";
+				datas[0][5] = "true";
+				
+				datas[1][0] = "1002";
+				datas[1][1] = "30";
+				datas[1][2] = "Präsi";
+				datas[1][3] = "11.11.1990";
+				datas[1][4] = "b2";
+				datas[1][5] = "false";
+			}
+			return datas;
 		
-		datas[1][0] = "1002";
-		datas[1][1] = "11.11.1990";
-		datas[1][2] = "Präsi";
-		datas[1][3] = "30";
-		datas[1][4] = "b2";
-		datas[1][5] = "false";
-		
-		return datas;
 	}
 	
+	private String[] getHeader(String klasse){
+			switch (klasse){
+			case "user":
+				return columnHeaderUser;
+			case "fachgruppe":
+				return columnHeaderFachgurppe;
+			case "modul":
+				return columnHeaderModul;
+			case "prueferkonstellation":
+				return columnHeaderPrfkonst;
+			case "pruefung":
+				return columnHeaderPrfg;
+			case "studiengang":
+				return columnHeaderStdg;
+			default:
+				return null;
+				}		
+		}
 	
-	
-	
+	public DefaultTableModel aendereDtm(String klasse) {
+		System.out.println("andereDTM + " + klasse);
+		DefaultTableModel dtm = new DefaultTableModel(data(klasse),
+				getHeader(klasse)) {
+
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		return dtm;
+		
+	}
 	
 	
 }
