@@ -14,9 +14,9 @@ import javax.swing.SwingConstants;
 import java.awt.EventQueue;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JCheckBox;
 
 public class UserDet extends JFrame{
-	private JPasswordField pwPasswort;
 	private JTextField textNutzername;
 	private JTextField textName;
 	
@@ -35,15 +35,6 @@ public class UserDet extends JFrame{
 		lblBenutzername.setBounds(10, 54, 81, 14);
 		getContentPane().add(lblBenutzername);
 		
-		JLabel lblPasswort = new JLabel("Passwort:");
-		lblPasswort.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPasswort.setBounds(10, 84, 81, 14);
-		getContentPane().add(lblPasswort);
-		
-		pwPasswort = new JPasswordField();
-		pwPasswort.setBounds(116, 81, 120, 17);
-		getContentPane().add(pwPasswort);
-		
 		textNutzername = new JTextField();
 		textNutzername.setBounds(116, 51, 120, 20);
 		getContentPane().add(textNutzername);
@@ -56,12 +47,12 @@ public class UserDet extends JFrame{
 		
 		JLabel lblRolle = new JLabel("Rolle:");
 		lblRolle.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblRolle.setBounds(45, 109, 46, 14);
+		lblRolle.setBounds(45, 79, 46, 14);
 		getContentPane().add(lblRolle);
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Dozent", "Fachgruppenreferent", "Admin"}));
-		comboBox.setBounds(116, 109, 120, 18);
+		comboBox.setBounds(116, 76, 120, 20);
 		getContentPane().add(comboBox);
 		
 		JButton btnSpeichern = new JButton("Speichern");
@@ -85,11 +76,19 @@ public class UserDet extends JFrame{
 				
 			}
 		});
-		btnSpeichern.setBounds(29, 134, 120, 23);
+		btnSpeichern.setBounds(10, 133, 120, 23);
 		getContentPane().add(btnSpeichern);
 		setBounds(100, 100, 677, 400);
 		JButton btnAbbrechen = new JButton("Abbrechen");
-		btnAbbrechen.setBounds(159, 134, 105, 23);
+		btnAbbrechen.setBounds(140, 133, 105, 23);
 		getContentPane().add(btnAbbrechen);
+		
+		JCheckBox chckbxAktiv = new JCheckBox("aktiv");
+		chckbxAktiv.setBounds(116, 103, 97, 23);
+		getContentPane().add(chckbxAktiv);
+		
+		JLabel lblAktivitt = new JLabel("Aktivit\u00E4t:");
+		lblAktivitt.setBounds(45, 104, 46, 14);
+		getContentPane().add(lblAktivitt);
 	}
 }

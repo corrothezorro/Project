@@ -18,6 +18,7 @@ public class Selbstinformation extends JFrame{
 	private JPasswordField passwordField_1;
 	private JTextField textField;
 	private SelbstinformationController selbstinformationController = new SelbstinformationController();
+	private JTextField textField_1;
 	
 	public Selbstinformation(final String nutzername) {
 		setTitle("Pr\u00FCfungsverwaltung Passwort \u00E4ndern");
@@ -30,20 +31,20 @@ public class Selbstinformation extends JFrame{
 		
 		JLabel lblNewLabel_1 = new JLabel("Passwort:");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_1.setBounds(-23, 50, 94, 14);
+		lblNewLabel_1.setBounds(-18, 87, 94, 14);
 		getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Wiederholen:");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_2.setBounds(2, 75, 74, 14);
+		lblNewLabel_2.setBounds(2, 119, 74, 14);
 		getContentPane().add(lblNewLabel_2);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(97, 47, 96, 20);
+		passwordField.setBounds(97, 84, 96, 20);
 		getContentPane().add(passwordField);
 		
 		passwordField_1 = new JPasswordField();
-		passwordField_1.setBounds(97, 72, 96, 20);
+		passwordField_1.setBounds(97, 116, 96, 20);
 		getContentPane().add(passwordField_1);
 		
 		textField = new JTextField(nutzername);
@@ -67,11 +68,25 @@ public class Selbstinformation extends JFrame{
 				
 			}
 		});
-		btnNewButton.setBounds(12, 100, 89, 23);
+		btnNewButton.setBounds(29, 147, 89, 23);
 		getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Abbrechen");
-		btnNewButton_1.setBounds(104, 100, 89, 23);
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnNewButton_1.setBounds(128, 147, 89, 23);
 		getContentPane().add(btnNewButton_1);
+		
+		JLabel lblName = new JLabel("Name:");
+		lblName.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblName.setBounds(31, 56, 46, 14);
+		getContentPane().add(lblName);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(97, 53, 96, 20);
+		getContentPane().add(textField_1);
+		textField_1.setColumns(10);
 	}
 }

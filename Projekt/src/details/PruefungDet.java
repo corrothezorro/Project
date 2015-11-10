@@ -36,7 +36,7 @@ public class PruefungDet extends JFrame{
 		
 		JLabel lblRaum = new JLabel("Raum:");
 		lblRaum.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblRaum.setBounds(10, 69, 63, 14);
+		lblRaum.setBounds(10, 116, 63, 14);
 		getContentPane().add(lblRaum);
 		
 		JLabel lblForm = new JLabel("Form:");
@@ -46,7 +46,7 @@ public class PruefungDet extends JFrame{
 		
 		JLabel lblDauer = new JLabel("Dauer:");
 		lblDauer.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblDauer.setBounds(15, 119, 58, 14);
+		lblDauer.setBounds(10, 69, 58, 14);
 		getContentPane().add(lblDauer);
 		
 		JLabel lblModul = new JLabel("Modul:");
@@ -62,7 +62,7 @@ public class PruefungDet extends JFrame{
 		
 		txtRaum = new JTextField();
 		txtRaum.setText("" + raum);
-		txtRaum.setBounds(83, 66, 120, 20);
+		txtRaum.setBounds(83, 113, 120, 20);
 		getContentPane().add(txtRaum);
 		txtRaum.setColumns(10);
 		
@@ -76,7 +76,7 @@ public class PruefungDet extends JFrame{
 		
 		txtDauer = new JTextField();
 		txtDauer.setText("" + dauer);
-		txtDauer.setBounds(83, 116, 120, 20);
+		txtDauer.setBounds(83, 66, 120, 20);
 		getContentPane().add(txtDauer);
 		txtDauer.setColumns(10);
 		
@@ -86,8 +86,8 @@ public class PruefungDet extends JFrame{
 		getContentPane().add(txtModul);
 		txtModul.setColumns(10);
 		
-		JLabel lblNurFr = new JLabel("// nur f\u00FCr den Admin \u00E4nderbar");
-		lblNurFr.setBounds(229, 141, 182, 14);
+		JLabel lblNurFr = new JLabel("// read-only");
+		lblNurFr.setBounds(239, 141, 128, 14);
 		getContentPane().add(lblNurFr);
 		
 		JButton btnSpeichern = new JButton("Speichern");
@@ -110,6 +110,10 @@ public class PruefungDet extends JFrame{
 		JCheckBox chckbxAktiv = new JCheckBox("aktiv");
 		chckbxAktiv.setBounds(83, 162, 97, 23);
 		getContentPane().add(chckbxAktiv);
+		
+		JLabel lblNurFr_1 = new JLabel("// nur f\u00FCr den Admin");
+		lblNurFr_1.setBounds(239, 69, 144, 14);
+		getContentPane().add(lblNurFr_1);
 		if (aktiv){
 			System.out.println(aktiv + "");
 			chckbxAktiv.setSelected(true);

@@ -17,6 +17,7 @@ public class ModulDet extends JFrame{
 	public ModulDet(String modbez, int modnr, boolean aktiv) {
 		setTitle("Detailansicht Modul");
 		getContentPane().setLayout(null);
+		setBounds(100, 100, 430, 338);
 		
 		JLabel lblBezeichnung = new JLabel("Bezeichnung:");
 		lblBezeichnung.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -68,6 +69,14 @@ public class ModulDet extends JFrame{
 		chckbxAktiv.setBounds(110, 76, 97, 23);
 		chckbxAktiv.setSelected(aktiv);
 		getContentPane().add(chckbxAktiv);
+		
+		JButton btnHinzufgen = new JButton("Hinzuf\u00FCgen");
+		btnHinzufgen.setBounds(315, 132, 89, 23);
+		getContentPane().add(btnHinzufgen);
+		
+		JButton btnLschen = new JButton("L\u00F6schen");
+		btnLschen.setBounds(315, 178, 89, 23);
+		getContentPane().add(btnLschen);
 		
 	}
 }

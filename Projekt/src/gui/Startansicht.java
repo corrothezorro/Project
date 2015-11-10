@@ -32,13 +32,14 @@ import details.Selbstinformation;
 import details.UserDet;
 
 import javax.swing.JMenu;
-
 import Controller.StartansichtController;
 
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 
 import model.Pruefung;
+
+import javax.swing.JTextField;
 
 public class Startansicht extends JFrame {
 
@@ -55,6 +56,7 @@ public class Startansicht extends JFrame {
 	JMenuItem mntmPrfungen;
 	JMenuItem mntmStudiengnge;
 	JMenuItem mntmFachgruppen;
+	JTextField searchText;
 	
 
 	public Startansicht(String nutzername) {
@@ -219,6 +221,16 @@ public class Startansicht extends JFrame {
 
 		getContentPane().add(sp);
 		
+		JLabel lblSuchen = new JLabel("Suchen");
+		lblSuchen.setBounds(165, 270, 46, 14);
+		getContentPane().add(lblSuchen);
+		
+		searchText = new JTextField();
+		searchText.setBounds(226, 267, 86, 20);
+		getContentPane().add(searchText);
+		searchText.setColumns(10);
+		DocumentListener mySearchListener = new MySearchListener(this);
+		searchText.getDocument().addDocumentListener(mySearchListener); 
 	}
 
 	
