@@ -8,6 +8,7 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.Connection;
 
 import javax.swing.SwingConstants;
 
@@ -20,7 +21,7 @@ public class Selbstinformation extends JFrame{
 	private SelbstinformationController selbstinformationController = new SelbstinformationController();
 	private JTextField textField_1;
 	
-	public Selbstinformation(final String nutzername) {
+	public Selbstinformation(final String nutzername, Connection con) {
 		setTitle("Pr\u00FCfungsverwaltung Passwort \u00E4ndern");
 		getContentPane().setLayout(null);
 		

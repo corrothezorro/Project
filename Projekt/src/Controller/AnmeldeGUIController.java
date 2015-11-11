@@ -1,5 +1,7 @@
 package Controller;
 
+import java.sql.Connection;
+
 public class AnmeldeGUIController {
 	public AnmeldeGUIController(){
 		
@@ -17,5 +19,9 @@ public class AnmeldeGUIController {
 		return true;
 	}
 	
+	public Connection getConnection(){
+		return null;
+		
+	}
 	
 }

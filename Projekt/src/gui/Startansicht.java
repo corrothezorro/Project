@@ -22,6 +22,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowListener;
+import java.sql.Connection;
 import java.util.TreeMap;
 
 import javax.swing.JMenuBar;
@@ -32,6 +33,7 @@ import details.Selbstinformation;
 import details.UserDet;
 
 import javax.swing.JMenu;
+
 import Controller.StartansichtController;
 
 import javax.swing.JRadioButton;
@@ -59,11 +61,11 @@ public class Startansicht extends JFrame {
 	JTextField searchText;
 	
 
-	public Startansicht(String nutzername) {
+	public Startansicht(String nutzername, final Connection con) {
 		// Abfrage der Rolle des angemeldeten Nutzers
 		String rolle;
 		rolle = startansichtController.BestimmeRolle(nutzername);
-		actionlistener = new MyActionListener(this);
+		actionlistener = new MyActionListener(this, con);
 
 		setTitle("Pr\u00FCfungsverwaltung");
 		getContentPane().setLayout(null);
@@ -143,7 +145,7 @@ public class Startansicht extends JFrame {
 							char[] passwort = null;
 							String rolle = null;
 							Selbstinformation frame = new Selbstinformation(
-									nutzername);
+									nutzername, con);
 							frame.setVisible(true);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -186,12 +188,19 @@ public class Startansicht extends JFrame {
 		JMenuItem mntmFeedback = new JMenuItem("Feedback");
 		mnber.add(mntmFeedback);
 
-		ActionListener myActionListener = new MyActionListener(this);
+		
+		
+		
+		
+		ActionListener myActionListener = new MyActionListener(this, con);
 		ListSelectionListener myListSelectionListener = new MyListSelectionListener(
 				this);
 		
 		DefaultTableModel dtm = startansichtController.aendereDtm("pruefung");
 		tabelle = new Tabelle("pruefung", dtm);
+		dtm.fireTableDataChanged();
+		validate();
+		
 		tabelle.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		sorter = new TableRowSorter<DefaultTableModel>(dtm);

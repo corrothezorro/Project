@@ -14,7 +14,7 @@ public class User {
 		this.rolle = rolle;
 		this.aktiv = aktiv;
 	}	
-	
+		
 	public boolean getAktiv() {
 		return aktiv;
 	}

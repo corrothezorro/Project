@@ -1,18 +1,25 @@
 package details;
 
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.Connection;
+
 import javax.swing.JCheckBox;
 import javax.swing.JTextArea;
+import javax.swing.JSeparator;
+import javax.swing.JTable;
 
 public class StudiengangDet extends JFrame{
 	private JTextField txtBezeichnung;
-	public StudiengangDet() {
+	private JTable table;
+	public StudiengangDet(String bezeichnung, boolean aktiv, Connection con) {
 		setTitle("Detailansicht Studiengang");
 		getContentPane().setLayout(null);
 		
@@ -26,11 +33,15 @@ public class StudiengangDet extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnSpeichern.setBounds(33, 195, 120, 23);
+		btnSpeichern.setBounds(58, 255, 120, 23);
 		getContentPane().add(btnSpeichern);
 		
 		JButton btnAbbrechen = new JButton("Abbrechen");
-		btnAbbrechen.setBounds(174, 195, 110, 23);
+		btnAbbrechen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnAbbrechen.setBounds(188, 255, 110, 23);
 		getContentPane().add(btnAbbrechen);
 		
 		JLabel lblBezeichnung = new JLabel("Bezeichnung:");
@@ -44,20 +55,29 @@ public class StudiengangDet extends JFrame{
 		getContentPane().add(lblAktivitt);
 		
 		JCheckBox chckbxAktiv = new JCheckBox("aktiv");
-		chckbxAktiv.setBounds(121, 54, 97, 23);
+		chckbxAktiv.setBounds(117, 54, 97, 23);
 		getContentPane().add(chckbxAktiv);
 		
-		JTextArea txtrTabelleMit = new JTextArea();
-		txtrTabelleMit.setText("// Tabelle mit Modulen zum Studiengang");
-		txtrTabelleMit.setBounds(33, 90, 358, 94);
-		getContentPane().add(txtrTabelleMit);
-		
 		JButton btnHinzufgen = new JButton("Hinzuf\u00FCgen");
-		btnHinzufgen.setBounds(396, 108, 89, 23);
+		btnHinzufgen.setBounds(33, 204, 89, 23);
 		getContentPane().add(btnHinzufgen);
 		
 		JButton btnEntfernen = new JButton("Entfernen");
-		btnEntfernen.setBounds(401, 142, 89, 23);
+		btnEntfernen.setBounds(125, 204, 89, 23);
 		getContentPane().add(btnEntfernen);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(41, 83, 243, 8);
+		getContentPane().add(separator);
+		
+		JScrollPane sp = new JScrollPane();
+		table = new JTable();
+		sp.setBounds(33, 95, 258, 98);
+		sp.add(table);
+		getContentPane().add(sp);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(33, 241, 258, 14);
+		getContentPane().add(separator_1);
 	}
 }

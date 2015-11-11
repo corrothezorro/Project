@@ -112,7 +112,7 @@ public class StartansichtController {
 			if (klasse == "pruefung"){
 				// prfnr, dauer, prfForm, datum, raum, aktiv
 				
-				datas = new String[2][6];
+				datas = new String[4][6];
 				
 				datas[0][0] = "1001";
 				datas[0][1] = "120";
@@ -127,6 +127,20 @@ public class StartansichtController {
 				datas[1][3] = "11.11.1990";
 				datas[1][4] = "b2";
 				datas[1][5] = "false";
+				
+				datas[2][0] = "1002";
+				datas[2][1] = "30";
+				datas[2][2] = "Präsi";
+				datas[2][3] = "11.11.1991";
+				datas[2][4] = "b2";
+				datas[2][5] = "false";
+				
+				datas[3][0] = "1002";
+				datas[3][1] = "30";
+				datas[3][2] = "Präsi";
+				datas[3][3] = "11.11.1993";
+				datas[3][4] = "b2";
+				datas[3][5] = "false";
 			}
 			return datas;
 		
@@ -153,6 +167,12 @@ public class StartansichtController {
 	
 	public DefaultTableModel aendereDtm(String klasse) {
 		System.out.println("andereDTM + " + klasse);
+		
+		/*
+		DefaultTableModel dtm = startansichtController.aendereDtm("pruefung");
+		tabelle = new Tabelle("pruefung", dtm);
+		*/
+		
 		DefaultTableModel dtm = new DefaultTableModel(data(klasse),
 				getHeader(klasse)) {
 
@@ -166,3 +186,5 @@ public class StartansichtController {
 	
 	
 }
+
+

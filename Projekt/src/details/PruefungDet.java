@@ -9,6 +9,7 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.Connection;
 import java.util.Date;
 
 import javax.swing.JCheckBox;
@@ -20,7 +21,7 @@ public class PruefungDet extends JFrame{
 	private JTextField txtModul;
 	
 	
-	public PruefungDet(int prfnr, Date datum, String prfForm, int dauer, String raum, boolean aktiv) {
+	public PruefungDet(int prfnr, Date datum, String prfForm, int dauer, String raum, boolean aktiv, Connection con) {
 		setTitle("Detailansicht Pr\u00FCfung");
 		getContentPane().setLayout(null);
 		

@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import java.awt.EventQueue;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 import javax.swing.JSeparator;
 
@@ -22,6 +24,10 @@ public class AnmeldeGUI extends JFrame {
 	private AnmeldeGUIController anmeldeGUIController = new AnmeldeGUIController();
 
 	public AnmeldeGUI() {
+		
+		
+		
+		
 		setTitle("Log-In Pr\u00FCfungsverwaltung");
 		getContentPane().setLayout(null);
 
@@ -43,6 +49,8 @@ public class AnmeldeGUI extends JFrame {
 		tfNutzer.setColumns(10);
 
 		JButton btnEinloggen = new JButton("Einloggen");
+		
+		
 		btnEinloggen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EventQueue.invokeLater(new Runnable() {
@@ -51,8 +59,13 @@ public class AnmeldeGUI extends JFrame {
 							String nutzername = tfNutzer.getText();
 							char[] passwort = pfPasswort.getPassword();
 							
+							Connection con = anmeldeGUIController.getConnection();
+							
+							
+							
+							
 							if(anmeldeGUIController.passwortPruefen(nutzername, passwort) && anmeldeGUIController.nutzerAktiv(nutzername)){
-								Startansicht frame = new Startansicht(nutzername);
+								Startansicht frame = new Startansicht(nutzername, con);
 								frame.setVisible(true);
 								setVisible(false);
 								dispose();
