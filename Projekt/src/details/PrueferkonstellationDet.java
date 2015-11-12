@@ -3,9 +3,117 @@ package details;
 import java.sql.Connection;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JComboBox;
+import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
+import javax.swing.JTable;
+import javax.swing.JButton;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import javax.swing.JSeparator;
 
 public class PrueferkonstellationDet extends JFrame{
+	private JTable tabellePrfg;
+	private JTable table;
+	private JTable table_1;
 	public PrueferkonstellationDet(Connection con) {
+		setTitle("Pr\u00FCferkonstellation Detailansicht");
+		getContentPane().setLayout(null);
+		
+		JComboBox cbModul = new JComboBox();
+		cbModul.setBounds(107, 18, 124, 20);
+		getContentPane().add(cbModul);
+		
+		JLabel lblModul = new JLabel("Modul:");
+		lblModul.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblModul.setBounds(31, 21, 46, 14);
+		getContentPane().add(lblModul);
+		
+		
+		JScrollPane sp1 = new JScrollPane();
+		tabellePrfg = new JTable();
+		sp1.add(tabellePrfg);
+		sp1.setBounds(20, 49, 272, 133);
+		getContentPane().add(sp1);
+		
+		JButton btnHinzufgenPrf = new JButton("Hinzuf\u00FCgen");
+		btnHinzufgenPrf.setBounds(30, 193, 89, 23);
+		getContentPane().add(btnHinzufgenPrf);
+		
+		JButton btnEntfernenPrf = new JButton("Entfernen");
+		btnEntfernenPrf.setBounds(129, 193, 89, 23);
+		getContentPane().add(btnEntfernenPrf);
+		
+		JLabel lblErstprfer = new JLabel("Erstpr\u00FCfer:");
+		lblErstprfer.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblErstprfer.setBounds(-55, 249, 132, 14);
+		getContentPane().add(lblErstprfer);
+		
+		JComboBox cbErstpr = new JComboBox();
+		cbErstpr.setBounds(104, 246, 127, 20);
+		getContentPane().add(cbErstpr);
+		
+		JScrollPane sp2 = new JScrollPane();
+		table = new JTable();
+		sp2.setBounds(20, 287, 272, 133);
+		sp2.add(table);
+		getContentPane().add(sp2);
+		
+		JButton btnHinzufgenZwtPrf = new JButton("Hinzuf\u00FCgen");
+		btnHinzufgenZwtPrf.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnHinzufgenZwtPrf.setBounds(31, 431, 89, 23);
+		getContentPane().add(btnHinzufgenZwtPrf);
+		
+		JButton btnEntfernenZwtPrf = new JButton("Entfernen");
+		btnEntfernenZwtPrf.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnEntfernenZwtPrf.setBounds(129, 431, 89, 23);
+		getContentPane().add(btnEntfernenZwtPrf);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(10, 274, 295, 2);
+		getContentPane().add(separator);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(10, 224, 295, 14);
+		getContentPane().add(separator_1);
+		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setBounds(20, 474, 278, 2);
+		getContentPane().add(separator_2);
+		
+		JScrollPane sp3 = new JScrollPane();
+		table_1 = new JTable();
+		sp3.add(table_1);
+		sp3.setBounds(31, 491, 272, 133);
+		getContentPane().add(sp3);
+		
+		JButton btnHinzufgen = new JButton("Hinzuf\u00FCgen");
+		btnHinzufgen.setBounds(31, 635, 89, 23);
+		getContentPane().add(btnHinzufgen);
+		
+		JButton btnEntfernen = new JButton("Entfernen");
+		btnEntfernen.setBounds(142, 635, 89, 23);
+		getContentPane().add(btnEntfernen);
+		
+		JButton btnSpeivhern = new JButton("Speichern");
+		btnSpeivhern.setBounds(113, 693, 89, 23);
+		getContentPane().add(btnSpeivhern);
+		
+		JButton btnAbbrechen = new JButton("Abbrechen");
+		btnAbbrechen.setBounds(212, 693, 89, 23);
+		getContentPane().add(btnAbbrechen);
+		
+		JSeparator separator_3 = new JSeparator();
+		separator_3.setBounds(31, 669, 272, 2);
+		getContentPane().add(separator_3);
 	}
-
 }
