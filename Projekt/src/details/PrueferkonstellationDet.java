@@ -19,7 +19,7 @@ public class PrueferkonstellationDet extends JFrame{
 	private JTable tabellePrfg;
 	private JTable table;
 	private JTable table_1;
-	public PrueferkonstellationDet(Connection con) {
+	public PrueferkonstellationDet(String modul, String erstpruefer, String zweitpruefer, Connection con) {
 		setTitle("Pr\u00FCferkonstellation Detailansicht");
 		getContentPane().setLayout(null);
 		
@@ -93,15 +93,15 @@ public class PrueferkonstellationDet extends JFrame{
 		JScrollPane sp3 = new JScrollPane();
 		table_1 = new JTable();
 		sp3.add(table_1);
-		sp3.setBounds(31, 491, 272, 133);
+		sp3.setBounds(20, 487, 272, 133);
 		getContentPane().add(sp3);
 		
 		JButton btnHinzufgen = new JButton("Hinzuf\u00FCgen");
-		btnHinzufgen.setBounds(31, 635, 89, 23);
+		btnHinzufgen.setBounds(30, 631, 89, 23);
 		getContentPane().add(btnHinzufgen);
 		
 		JButton btnEntfernen = new JButton("Entfernen");
-		btnEntfernen.setBounds(142, 635, 89, 23);
+		btnEntfernen.setBounds(129, 631, 89, 23);
 		getContentPane().add(btnEntfernen);
 		
 		JButton btnSpeivhern = new JButton("Speichern");
@@ -115,5 +115,17 @@ public class PrueferkonstellationDet extends JFrame{
 		JSeparator separator_3 = new JSeparator();
 		separator_3.setBounds(31, 669, 272, 2);
 		getContentPane().add(separator_3);
+		
+		JLabel lblPrfungen = new JLabel("// Pr\u00FCfungen");
+		lblPrfungen.setBounds(356, 98, 97, 14);
+		getContentPane().add(lblPrfungen);
+		
+		JLabel lblZweitprfer = new JLabel("// Zweitpr\u00FCfer");
+		lblZweitprfer.setBounds(356, 326, 97, 14);
+		getContentPane().add(lblZweitprfer);
+		
+		JLabel lblStudiengang = new JLabel("// Studieng\u00E4nge");
+		lblStudiengang.setBounds(376, 504, 89, 14);
+		getContentPane().add(lblStudiengang);
 	}
 }

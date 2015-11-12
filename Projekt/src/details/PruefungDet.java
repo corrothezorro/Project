@@ -113,7 +113,7 @@ public class PruefungDet extends JFrame{
 		getContentPane().add(chckbxAktiv);
 		
 		JLabel lblNurFr_1 = new JLabel("// nur f\u00FCr den Admin");
-		lblNurFr_1.setBounds(239, 69, 144, 14);
+		lblNurFr_1.setBounds(237, 116, 144, 14);
 		getContentPane().add(lblNurFr_1);
 		if (aktiv){
 			System.out.println(aktiv + "");
