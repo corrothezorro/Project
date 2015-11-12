@@ -24,7 +24,7 @@ public class ModulDet extends JFrame{
 	public ModulDet(String modbez, int modnr, boolean aktiv, Connection con) {
 		setTitle("Detailansicht Modul");
 		getContentPane().setLayout(null);
-		setBounds(100, 100, 506, 452);
+		setBounds(100, 100, 508, 562);
 		
 		JLabel lblBezeichnung = new JLabel("Bezeichnung:");
 		lblBezeichnung.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -51,43 +51,43 @@ public class ModulDet extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton.setBounds(79, 318, 120, 23);
+		btnNewButton.setBounds(87, 368, 120, 23);
 		getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Abbrechen");
-		btnNewButton_1.setBounds(209, 318, 115, 23);
+		btnNewButton_1.setBounds(209, 368, 115, 23);
 		getContentPane().add(btnNewButton_1);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(22, 106, 269, 2);
+		separator.setBounds(17, 149, 269, 2);
 		getContentPane().add(separator);
 		
 		JLabel lblAktivitt = new JLabel("Aktivit\u00E4t:");
 		lblAktivitt.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblAktivitt.setBounds(17, 81, 73, 14);
+		lblAktivitt.setBounds(17, 124, 73, 14);
 		getContentPane().add(lblAktivitt);
 		
 		JCheckBox chckbxAktiv = new JCheckBox("aktiv");
-		chckbxAktiv.setBounds(110, 76, 97, 23);
+		chckbxAktiv.setBounds(110, 119, 97, 23);
 		chckbxAktiv.setSelected(aktiv);
 		getContentPane().add(chckbxAktiv);
 		
 		JButton btnHinzufgen = new JButton("Hinzuf\u00FCgen");
-		btnHinzufgen.setBounds(22, 273, 89, 23);
+		btnHinzufgen.setBounds(22, 309, 89, 23);
 		getContentPane().add(btnHinzufgen);
 		
 		JButton btnLschen = new JButton("L\u00F6schen");
-		btnLschen.setBounds(121, 273, 89, 23);
+		btnLschen.setBounds(118, 309, 89, 23);
 		getContentPane().add(btnLschen);
 		
 		JScrollPane sp = new JScrollPane();
 		table = new JTable();
-		sp.setBounds(29, 131, 295, 131);
+		sp.setBounds(22, 167, 295, 131);
 		sp.add(table);
 		getContentPane().add(sp);
 		
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(32, 307, 292, 14);
+		separator_1.setBounds(29, 343, 292, 14);
 		getContentPane().add(separator_1);
 		
 		JLabel lblTabelleMit = new JLabel("// Tabelle mit prfg des Moduls");
@@ -95,16 +95,17 @@ public class ModulDet extends JFrame{
 		getContentPane().add(lblTabelleMit);
 		
 		textField = new JTextField();
-		textField.setBounds(364, 24, 86, 20);
+		textField.setBounds(110, 84, 120, 20);
 		getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblFachgruppe = new JLabel("Fachgruppe:");
-		lblFachgruppe.setBounds(278, 27, 89, 14);
+		lblFachgruppe.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblFachgruppe.setBounds(0, 87, 89, 14);
 		getContentPane().add(lblFachgruppe);
 		
 		JLabel lblReadonly = new JLabel("// read-only");
-		lblReadonly.setBounds(363, 52, 87, 14);
+		lblReadonly.setBounds(267, 87, 87, 14);
 		getContentPane().add(lblReadonly);
 		
 	}

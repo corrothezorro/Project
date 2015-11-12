@@ -19,6 +19,8 @@ import javax.swing.JTable;
 public class StudiengangDet extends JFrame{
 	private JTextField txtBezeichnung;
 	private JTable table;
+	
+	
 	public StudiengangDet(String bezeichnung, boolean aktiv, Connection con) {
 		setTitle("Detailansicht Studiengang");
 		getContentPane().setLayout(null);
