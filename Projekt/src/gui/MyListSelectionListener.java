@@ -8,9 +8,9 @@ import java.util.Date;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import model.Dozent;
 import model.Pruefung;
 import model.Studiengang;
+import model.User;
 
 
 
@@ -99,9 +99,9 @@ public class MyListSelectionListener implements ListSelectionListener{
 				case "prueferkonstellation":
 					Studiengang[] studiengaenge = null;
 					
-					Dozent erstpruefer = null;
+					User erstpruefer = null;
 					
-					Dozent[] zweitpruefer = null;
+					User[] zweitpruefer = null;
 					
 					Pruefung[] pruefungen = null;
 					

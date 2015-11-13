@@ -4,8 +4,6 @@ import java.util.Date;
 import java.util.TreeMap;
 
 import javax.swing.table.DefaultTableModel;
-
-import model.Dozent;
 import model.Fachgruppe;
 import model.Modul;
 import model.Pruefung;
@@ -87,49 +85,49 @@ public class StartansichtController {
 			if (klasse == "modul"){
 				// Modulbezeichnung, Modulnr., aktiv
 				
-				datas = new String[2][3];
+				datas = new Object[2][3];
 				
 				datas[0][0] = "Rechnungswesen";
 				datas[0][1] = "1001";
-				datas[0][2] = "true";
+				datas[0][2] = true;
 				
 				datas = new String[2][3];
 				datas[1][0] = "Produktion";
 				datas[1][1] = "1002";
-				datas[1][2] = "false";
+				datas[1][2] = false;
 			}
 			if (klasse == "pruefung"){
 				// prfnr, dauer, prfForm, datum, raum, aktiv
 				
-				datas = new String[4][6];
+				datas = new Object[4][6];
 				
 				datas[0][0] = "1001";
 				datas[0][1] = "120";
 				datas[0][2] = "klausur";
 				datas[0][3] = "12.12.1992";
 				datas[0][4] = "b3";
-				datas[0][5] = "true";
+				datas[0][5] = true;
 				
 				datas[1][0] = "1002";
 				datas[1][1] = "30";
 				datas[1][2] = "Präsi";
 				datas[1][3] = "11.11.1990";
 				datas[1][4] = "b2";
-				datas[1][5] = "false";
+				datas[1][5] = false;
 				
 				datas[2][0] = "1002";
 				datas[2][1] = "30";
 				datas[2][2] = "Präsi";
 				datas[2][3] = "11.11.1991";
 				datas[2][4] = "b2";
-				datas[2][5] = "false";
+				datas[2][5] = false;
 				
 				datas[3][0] = "1002";
 				datas[3][1] = "30";
 				datas[3][2] = "Präsi";
 				datas[3][3] = "11.11.1993";
 				datas[3][4] = "b2";
-				datas[3][5] = "false";
+				datas[3][5] = false;
 			}
 			return datas;
 		
@@ -157,17 +155,23 @@ public class StartansichtController {
 	public DefaultTableModel aendereDtm(String klasse) {
 		System.out.println("andereDTM + " + klasse);
 		
-		/*
-		DefaultTableModel dtm = startansichtController.aendereDtm("pruefung");
-		tabelle = new Tabelle("pruefung", dtm);
-		*/
-		
+	
 		DefaultTableModel dtm = new DefaultTableModel(data(klasse),
 				getHeader(klasse)) {
-
+			
+			Class[] columnTypes = new Class[] {
+					 Object.class, Object.class, Object.class,
+					 Object.class, Object.class, 
+					 Boolean.class
+				};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
+			
+			
 		};
 		return dtm;
 		

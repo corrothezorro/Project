@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 public class PruefungenFrame extends JFrame{
@@ -21,8 +22,8 @@ public class PruefungenFrame extends JFrame{
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null},
-				{null, null, null},
+				{true, "hallo", "penis"},
+				{false, "hallo 2", "otoo"},
 			},
 			new String[] {
 				"Ausw\u00E4hlen", "Pr\u00FCfungsname", "Pr\u00FCfungsnummer"
@@ -37,6 +38,7 @@ public class PruefungenFrame extends JFrame{
 		});
 		table.getColumnModel().getColumn(0).setPreferredWidth(109);
 		table.getColumnModel().getColumn(2).setPreferredWidth(142);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		sp.add(table);
 		sp.setBounds(10, 11, 414, 160);
 		getContentPane().add(sp);
@@ -44,6 +46,20 @@ public class PruefungenFrame extends JFrame{
 		JButton btnOk = new JButton("Ok");
 		btnOk.setBounds(335, 182, 89, 23);
 		getContentPane().add(btnOk);
+		setBounds(100,100,200,200);
+	}
+	
+	public static void main(String[] args){
+		try {								
+				PruefungenFrame frame = new PruefungenFrame();
+				frame.setVisible(true);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
 		
 	}
 }

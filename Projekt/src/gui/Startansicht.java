@@ -9,6 +9,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
@@ -210,6 +211,7 @@ public class Startansicht extends JFrame {
 		
 		DefaultTableModel dtm = startansichtController.aendereDtm("pruefung");
 		tabelle = new Tabelle("pruefung", dtm);
+		((JComponent) tabelle.getDefaultRenderer(Boolean.class)).setOpaque(true);
 		dtm.fireTableDataChanged();
 		validate();
 		

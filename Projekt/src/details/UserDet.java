@@ -90,7 +90,7 @@ public class UserDet extends JFrame{
 		getContentPane().add(btnAbbrechen);
 		
 		JCheckBox chckbxAktiv = new JCheckBox("aktiv");
-		chckbxAktiv.setBounds(183, 100, 97, 23);
+		chckbxAktiv.setBounds(160, 100, 97, 23);
 		getContentPane().add(chckbxAktiv);
 		
 		JLabel lblAktivitt = new JLabel("Aktivit\u00E4t:");
