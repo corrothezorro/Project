@@ -105,7 +105,7 @@ public class MyListSelectionListener implements ListSelectionListener{
 					
 					Pruefung[] pruefungen = null;
 					
-					gui.startansichtController.aenderPrufestkonst(studiengaenge, erstpruefer, zweitpruefer, pruefungen);
+					// gui.startansichtController.aenderPrufestkonst(studiengaenge, erstpruefer, zweitpruefer, pruefungen);
 					
 					
 				case "user":

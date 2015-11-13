@@ -175,9 +175,21 @@ public class Startansicht extends JFrame {
 		
 		mntmPrfungen = new JMenuItem("Pr\u00FCfungen");
 		mnBearbeiten.add(mntmPrfungen);
+		
+		JMenuItem mntmSemester = new JMenuItem("Semester");
+		mnBearbeiten.add(mntmSemester);
+		
+		JMenu mnPrfungen = new JMenu("Pr\u00FCfungen");
+		mnBearbeiten.add(mnPrfungen);
+		
+		JMenuItem mntmArt = new JMenuItem("Arten");
+		mnPrfungen.add(mntmArt);
 
 		mntmStudiengnge = new JMenuItem("Studieng\u00E4nge");
 		mnBearbeiten.add(mntmStudiengnge);
+		
+		JMenuItem mntmPrferkonstellationen = new JMenuItem("Pr\u00FCferkonstellationen");
+		mnBearbeiten.add(mntmPrferkonstellationen);
 
 		mntmFachgruppen = new JMenuItem("Fachgruppen");
 		mnBearbeiten.add(mntmFachgruppen);
@@ -241,6 +253,4 @@ public class Startansicht extends JFrame {
 		DocumentListener mySearchListener = new MySearchListener(this);
 		searchText.getDocument().addDocumentListener(mySearchListener); 
 	}
-
-	
 }
