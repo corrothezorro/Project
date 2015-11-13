@@ -8,7 +8,6 @@ import javax.swing.table.DefaultTableModel;
 import model.Dozent;
 import model.Fachgruppe;
 import model.Modul;
-import model.Prueferkonstellation;
 import model.Pruefung;
 import model.Studiengang;
 import model.User;
@@ -20,9 +19,6 @@ public class StartansichtController {
 	private TreeMap<Integer, Fachgruppe> fachgruppen;
 	private TreeMap<Integer, User> user;
 	private TreeMap<Integer, Studiengang> studgaenge;
-	private TreeMap<Integer, Prueferkonstellation> prueferkonst;
-	
-	
 	
 	private String[] columnHeaderUser = new String[] { "Benutzername", "Nachname", "Rolle", "aktiv" };
 	private String[] columnHeaderFachgurppe = new String[] { "Bezeichnung", "aktiv" };
@@ -36,7 +32,6 @@ public class StartansichtController {
 	private Fachgruppe aktFachgruppe;
 	private User aktUser;
 	private Studiengang aktStudiengang;
-	private Prueferkonstellation aktPrueferkonst;
 	
 	public StartansichtController(){
 		
@@ -69,9 +64,6 @@ public class StartansichtController {
 		return aktStudiengang;
 	}
 
-	public Prueferkonstellation getAktPrueferkonst() {
-		return aktPrueferkonst;
-	}
 
 	public void aenderAktPruefung(int prfnr, Date datum, String prfForm, int dauer, String raum, boolean aktiv){
 		aktPruefung = new Pruefung(prfnr, datum, prfForm, dauer, raum, aktiv);
@@ -87,9 +79,6 @@ public class StartansichtController {
 	}
 	public void aenderAktStudiengang(String bezeichnung, boolean aktiv){
 		aktStudiengang = new Studiengang(bezeichnung, aktiv);
-	}
-	public void aenderPrufestkonst(Studiengang[] studiengaenge, Dozent erstpruefer, Dozent[] zweitpruefer, Pruefung[] pruefungen){
-		aktPrueferkonst = new Prueferkonstellation(studiengaenge, erstpruefer, zweitpruefer,pruefungen);
 	}
 
 	private Object[][] data(String klasse){

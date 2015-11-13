@@ -17,7 +17,7 @@ public class Fachgruppenreferent extends Dozent{
 		Studiengang[] studiengang = bestimmeStudiengang(null);
 		
 		
-		new Prueferkonstellation(studiengang, erstPruefer, zweitPruefer, pruefungen);
+		
 		
 		
 	}
@@ -34,16 +34,7 @@ public class Fachgruppenreferent extends Dozent{
 	public Dozent[] bestimmeZweitpruefer(Dozent[] dozent){
 		return dozent;
 	}
-	
-	public boolean aenderePrueferkonstellation(Prueferkonstellation prueferkonstellation){
-		//true falls Änderung erfolgreich, false falls nicht
-		return true;
-	}
-	
-	public void loeschePrueferkonstellation(Prueferkonstellation prueferkonstellation){
-		//SQL-Anweisung zum Löschen der Fachgruppe
-	}
-	
+		
 	
 	public Pruefung[] zeigePruefungenFachgruppe(Fachgruppe fachgruppe){
 		//SQL-Abfrage auf alle Prüfungen für Module der Fachgruppe
