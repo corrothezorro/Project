@@ -15,17 +15,19 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JSeparator;
 
+import Controller.PrueferkonstellationDetController;
+
 public class PrueferkonstellationDet extends JFrame{
 	private JTable tabellePrfg;
 	private JTable table;
 	private JTable table_1;
-	public PrueferkonstellationDet(String modul, String erstpruefer, String zweitpruefer, Connection con) {
+	private PrueferkonstellationDetController controller;
+	
+	public PrueferkonstellationDet(String modul, String erstpruefer, String zweitpruefer, Connection con, String nutzer) {
 		setTitle("Pr\u00FCferkonstellation Detailansicht");
 		getContentPane().setLayout(null);
+		controller = new PrueferkonstellationDetController(con);
 		
-		JComboBox cbModul = new JComboBox();
-		cbModul.setBounds(107, 18, 124, 20);
-		getContentPane().add(cbModul);
 		
 		JLabel lblModul = new JLabel("Modul:");
 		lblModul.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -127,5 +129,18 @@ public class PrueferkonstellationDet extends JFrame{
 		JLabel lblStudiengang = new JLabel("// Studieng\u00E4nge");
 		lblStudiengang.setBounds(376, 504, 89, 14);
 		getContentPane().add(lblStudiengang);
+		
+		
+		JComboBox cbModul = new JComboBox();
+		cbModul.setBounds(107, 18, 124, 20);
+		getContentPane().add(cbModul);
+		
+		String fachgruppe = controller.getFachgruppe(nutzer);
+		String[] modulbezeichnung = controller.getModule(fachgruppe);
+		
+		for (int i = 0; i < modulbezeichnung.length; i++){ 
+			   cbModul.addItem(modulbezeichnung[i]);
+			}
+		
 	}
 }
