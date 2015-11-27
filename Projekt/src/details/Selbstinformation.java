@@ -18,12 +18,14 @@ public class Selbstinformation extends JFrame{
 	private JPasswordField passwordField;
 	private JPasswordField passwordField_1;
 	private JTextField textField;
-	private SelbstinformationController selbstinformationController = new SelbstinformationController();
+	private SelbstinformationController selbstinformationController;
 	private JTextField textField_1;
 	
-	public Selbstinformation(final String nutzername, Connection con) {
-		setTitle("Pr\u00FCfungsverwaltung Passwort \u00E4ndern");
-		getContentPane().setLayout(null);
+	public Selbstinformation(final String nutzername, final Connection con) {
+		this.setTitle("Pr\u00FCfungsverwaltung Passwort \u00E4ndern");
+		this.getContentPane().setLayout(null);
+		this.setSize(400, 220);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblNewLabel = new JLabel("Nutzername:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -60,8 +62,9 @@ public class Selbstinformation extends JFrame{
 				char[] pw1 = passwordField.getPassword();
 				char[] pw2 = passwordField_1.getPassword();
 				
+				selbstinformationController = new SelbstinformationController(con);
 				if(selbstinformationController.passwoerterGleich(pw1, pw2)){
-					selbstinformationController.passwortSpeichern(nutzername);
+					selbstinformationController.passwortSpeichern(nutzername, String.copyValueOf(pw1));
 					
 				}else{
 					
@@ -90,4 +93,5 @@ public class Selbstinformation extends JFrame{
 		getContentPane().add(textField_1);
 		textField_1.setColumns(10);
 	}
+	
 }
