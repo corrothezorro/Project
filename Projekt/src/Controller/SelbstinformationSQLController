@@ -1,0 +1,92 @@
+package DB_Controller;
+
+import java.sql.*;
+
+public class SelbstinformationSQLController {
+	Connection con;
+	
+	public SelbstinformationSQLController(Connection con){
+		this.con = con;
+		
+}
+
+
+
+	public Object[] getName(String Name) {
+		String sql = "select name from user where name = '" + Name + "'";
+		Object[] data = null;
+		
+		try {
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			int i = 0;
+			
+			// Schleife zum Zaehlen der Datensaetze im Resultset. Wird benoetigt um die Laenge des data-Arrays zu ermitteln
+			while(rs.next()){
+				i = i+1 ;
+			}
+			// data-Array wird initiallisiert, rs-zeiger wird wieder vor den ersten Eintrag gesetzt, i wird wieder auf 0 gesetzt
+			data  = new Object[i][2];
+			i = 0;
+			rs.beforeFirst();
+			
+			while (rs.next()){
+				data[i] = rs.getString(1);
+				i = i+1;
+			}
+			rs.close();
+			stmt.close();
+			
+			
+			
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();	
+		}
+		
+		
+		return data;
+	}
+	
+
+	
+	public Object[] setPasswort(String Passwort, String name) {
+		
+		
+		
+		Object[] data = null;
+		
+		try {
+		
+			String sql = "update User set password = ? where name = ?";
+			PreparedStatement preparedStatement = con.prepareStatement(sql);
+			
+			preparedStatement.setString(1, Passwort);
+			preparedStatement.setString(2, name);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			rs.next();
+			rs.getString(1);
+			rs.close();
+			preparedStatement.close();
+			
+			con.commit();
+			
+		} catch (SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();	
+		}
+		
+		
+		return data;
+	
+	}
+	
+	
+	}
